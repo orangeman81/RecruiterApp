@@ -1,0 +1,108 @@
+.formTypography {
+  font-size: $textField-size;
+  font-weight: $regular;
+  color: $dGray;
+}
+
+input,
+select,
+textarea {
+  @extend .formTypography;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+.formGroup {
+  @extend .relative;
+  label {
+    @extend .formTypography;
+    @extend .bold;
+    @extend .absolute;
+    left: 16px;
+    background-color: $lGray;
+    line-height: 0.25;
+    display: block;
+    padding: 0 8px;
+  }
+}
+
+input,
+textarea,
+select {
+  background: $lGray;
+  padding: $inputPadding;
+  border: $border;
+  outline: none;
+  box-shadow: none;
+  will-change: border-color;
+  border-radius: $radius;
+  font-family: inherit;
+  box-sizing: border-box;
+  width: 100%;
+  transition: all 0.3s ease-out;
+
+  &:valid {
+    border-color: $success;
+  }
+
+  &:not(:empty):invalid {
+    border-color: $warn;
+  }
+
+  &:focus {
+    border-color: $color;
+  }
+}
+
+select {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, $gray 50%),
+    linear-gradient(135deg, $gray 50%, transparent 50%), linear-gradient(to right, $lGray, $lGray);
+  background-position: calc(100% - 20px) calc(0.85em + 2px), calc(100% - 15px) calc(0.85em + 2px),
+    calc(100% - 2.5em) 0.25em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+  &:focus {
+    background-image: linear-gradient(45deg, $color 50%, transparent 50%),
+      linear-gradient(135deg, transparent 50%, $color 50%), linear-gradient(to right, $lGray, $lGray);
+    background-position: calc(100% - 15px) 0.85em, calc(100% - 20px) 0.85em, calc(100% - 2.5em) 0.5em;
+    background-size: 5px 5px, 5px 5px, 1px 1.25em;
+    background-repeat: no-repeat;
+    border-color: $color;
+  }
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background-color: $white;
+  border-radius: $radius / 2;
+  transform: translateY(6px);
+  &:checked:after {
+    content: "\2714";
+    position: absolute;
+    right: 1px;
+    bottom: -4px;
+    color: $success;
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+// chrome input fix
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px $off-white inset !important;
+}

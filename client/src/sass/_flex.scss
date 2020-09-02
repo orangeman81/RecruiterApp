@@ -1,0 +1,76 @@
+//flexbox
+.flex {
+  display: flex;
+}
+
+.f-column {
+  flex-direction: column;
+}
+
+.f-wrap {
+  flex-wrap: wrap;
+}
+
+.f-jc {
+  justify-content: center;
+}
+
+.f-jsb {
+  justify-content: space-between;
+}
+
+.f-jsa {
+  justify-content: space-around;
+}
+
+.f-je {
+  justify-content: flex-end;
+}
+
+.f-ac {
+  align-items: center;
+}
+
+.f-asb {
+  align-items: space-between;
+}
+
+.f-asa {
+  align-items: space-around;
+}
+
+.f-ae {
+  align-items: flex-end;
+}
+
+// flex layouts
+.f-page {
+  @extend .flex;
+  @extend .f-column;
+  @extend .f-jsb;
+  @extend .fullHeight;
+
+  & > header {
+    flex-grow: 1;
+  }
+  & > main {
+    flex-grow: 8;
+    @extend .container;
+  }
+  & > footer {
+    @extend .flex;
+    flex-grow: 1;
+  }
+}
+
+.f-l-jsb {
+  @extend .flex;
+  @extend .f-jsb;
+  @extend .f-ac;
+}
+
+.f-l-center {
+  @extend .flex;
+  @extend .f-jc;
+  @extend .f-ac;
+}

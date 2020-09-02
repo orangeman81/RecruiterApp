@@ -1,0 +1,28 @@
+// color utilities
+.primary {
+  color: $color;
+}
+
+.secondary {
+  color: $secondary;
+}
+
+.white {
+  color: $white;
+}
+
+.gray {
+  color: $gray;
+}
+
+.primaryBkg {
+  background: linear-gradient(fade-out($lightColor, 0.5), transparent);
+}
+
+.secondaryBkg {
+  background: linear-gradient(fade-out($lightSecondary, 0.5), transparent);
+}
+
+.grayBkg {
+  background: $bodyGray;
+}

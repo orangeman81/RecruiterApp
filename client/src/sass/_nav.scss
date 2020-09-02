@@ -1,0 +1,112 @@
+nav#mainNavbar {
+  @extend .relative;
+  @extend .mb-56;
+  height: $navbarHeight;
+  width: 100vw;
+  background: #fff;
+  top: 0;
+  z-index: 999;
+  transition: all 0.3s ease-in-out;
+  box-shadow: $elevation;
+
+  ul {
+    a {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      &:hover,
+      &.active {
+        @extend .textWithLine;
+      }
+    }
+  }
+
+  .desktop,
+  .mobile {
+    @extend .border-box;
+    @extend .size-100;
+    &:not(.small) {
+      padding: 16px 56px;
+    }
+  }
+
+  .desktop {
+    @extend .hide-tablet;
+    @extend .f-l-jsb;
+    & > ul,
+    & > a {
+      @extend .flex;
+      @extend .f-ac;
+    }
+    & > ul {
+      li:not(:last-child) {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  .mobile {
+    @extend .hide-laptop;
+    @extend .f-l-center;
+
+    & > a {
+      @extend .flex;
+      @extend .f-ac;
+    }
+
+    #menu {
+      width: 24px;
+      position: absolute;
+      left: 24px;
+      top: calc(50% - 12px);
+      cursor: pointer;
+      z-index: 20;
+    }
+
+    .nav {
+      @extend .hide;
+      @extend .pt-24;
+      @extend .w-100;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      overflow: hidden;
+      animation: open 0.4s ease-in-out;
+      z-index: 10;
+
+      li {
+        text-align: center;
+
+        a {
+          line-height: 4;
+          font-size: $h4-size;
+        }
+      }
+    }
+  }
+
+  &.small {
+    height: 56px;
+    .desktop,
+    .mobile {
+      padding: 8px 56px;
+    }
+  }
+
+  &.open {
+    .mobile {
+      .nav {
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(
+          to bottom,
+          #fff 60%,
+          $off-white 80%,
+          transparent 100%
+        );
+      }
+    }
+  }
+}

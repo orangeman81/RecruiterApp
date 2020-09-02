@@ -1,0 +1,71 @@
+.btn-default {
+  @extend .textUppercase;
+  @extend .textCenter;
+  overflow: hidden;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: none;
+  font-size: $h6-size;
+}
+
+button,
+.btn {
+  @extend .btn-default;
+  @extend .gray;
+  transition: all 0.3s ease;
+  margin: 0;
+  font-weight: $bold;
+  line-height: 1em;
+
+  &:not(.filled),
+  &:not(.rounded) {
+    padding: 8px 12px;
+    &:not([disabled]) {
+      will-change: border-color, color;
+      border: $border;
+      background: transparent;
+      &:hover,
+      &.active {
+        @extend .secondary;
+        @extend .emphasis;
+        border-color: $secondary;
+      }
+    }
+  }
+
+  &.filled,
+  &.rounded {
+    padding: 8px;
+  }
+
+  &.filled {
+    @extend .elevation;
+    &:not([disabled]) {
+      background: $color;
+      color: $white;
+      &:hover,
+      &.active {
+        @extend .emphasis;
+        background: $secondary;
+      }
+    }
+  }
+
+  &:not(.rounded) {
+    border-radius: $radius;
+  }
+
+  &.rounded {
+    border-radius: 50%;
+  }
+
+  &[disabled] {
+    color: rgba(0, 0, 0, 0.26);
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+}

@@ -1,0 +1,65 @@
+//user agent overrides
+body,
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  background-color: $bodyGray;
+}
+
+// core elements relative position
+body,
+main,
+section,
+article {
+  @extend .relative;
+}
+
+// ui elements
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  a,
+  button {
+    &:hover {
+      animation: emphasis 0.4s both ease-out;
+    }
+  }
+
+  a:not(:last-child),
+  button:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+// scrollbar
+::-webkit-scrollbar {
+  background: $lGray;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color;
+}

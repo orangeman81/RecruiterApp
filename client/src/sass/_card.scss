@@ -1,0 +1,116 @@
+.card {
+  @extend .flex;
+  @extend .f-column;
+  @extend .elevation;
+  background: $white;
+  border-radius: $radius;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  figure {
+    @extend .relative;
+    @extend .imgOverlay;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &:not(.details) {
+    figure {
+      padding-top: 56.25%;
+    }
+    .content,
+    footer {
+      @extend .p-24;
+    }
+    .content {
+      height: 48%;
+    }
+    footer {
+      @extend .f-jsb;
+    }
+  }
+
+  footer {
+    @extend .flex;
+    @extend .f-ac;
+  }
+
+  &.details {
+    @extend .container;
+    @extend .mb-56;
+    @extend .ease-out;
+    will-change: margin-top;
+
+    figure {
+      padding-top: 33.33%;
+    }
+
+    .content {
+      padding: 4vw;
+    }
+
+    .description {
+      h2,
+      h3 {
+        @extend .mt-56;
+      }
+
+      img {
+        @extend .imgRes;
+      }
+
+      p > img {
+        @extend .pt-16;
+        @extend .pr-16;
+      }
+
+      ul {
+        @extend .mt-16;
+        @extend .mb-16;
+        li {
+          @extend .ml-40;
+          list-style: circle;
+        }
+      }
+    }
+
+    h2,
+    h3 {
+      @extend .flex;
+      @extend .f-ac;
+      span {
+        font-size: 1.2em;
+        @extend .primary;
+        @extend .mr-8;
+      }
+    }
+
+    h2 {
+      @extend .mb-24;
+    }
+
+    h3 {
+      @extend .mb-16;
+    }
+
+    hr {
+      @extend .mt-56;
+      @extend .mb-56;
+    }
+
+    section {
+      ol {
+        @extend .wide;
+      }
+    }
+
+    footer {
+      padding: 0 4vw 2vw;
+      a:not(:last-child) {
+        @extend .mr-8;
+      }
+      @extend .f-je;
+    }
+  }
+}

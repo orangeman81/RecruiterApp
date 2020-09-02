@@ -1,0 +1,70 @@
+// variables
+// colors
+$color: #0d47a1;
+$lightColor: #5472d3;
+$darkColor: #002171;
+$secondary: #ff5722;
+$darkSecondary: #e64a19;
+$lightSecondary: #fbe9e7;
+$warn: #ff5252;
+$success: #69f0ae;
+$gray: #707070;
+$bodyGray: #fafafa;
+$lineGray: rgba(0, 0, 0, 0.12);
+$lGray: #f5f5f5;
+$dGray: #424242;
+$navGray: #212121;
+$white: #ffffff;
+$off-white: rgba(255, 255, 255, 0.8);
+$off-black: rgba(0, 0, 0, 0.8);
+// typography
+$h1-size: 2.6rem;
+$h2-size: 2.2rem;
+$h3-size: 1.6rem;
+$h4-size: 1.2rem;
+$h5-size: 1rem;
+$h6-size: 0.8rem;
+$textField-size: 1rem;
+$body-size: 14px;
+$line-height: 1.6;
+// font family
+$body-family: "Lato", sans-serif;
+$headings-family: "PT Sans", sans-serif;
+// font weight
+$light: 300;
+$regular: 400;
+$bold: 700;
+// grid
+$columns: 12;
+$grid-gap: 24px;
+// grid breakpoints
+$desktop: 1440px;
+$laptop: 1280px;
+$tablet: 768px;
+$mobile: 600px;
+$desktop-up: "only screen and (min-width : #{$desktop + 1})";
+$laptop-up: "only screen and (min-width : #{$laptop + 1})";
+$tablet-up: "only screen and (min-width : #{$tablet + 1})";
+$desktop-down: "only screen and (max-width : #{$desktop})";
+$laptop-down: "only screen and (max-width : #{$laptop})";
+$tablet-down: "only screen and (max-width : #{$tablet})";
+// box model
+$border: solid 2px $gray;
+$radius: 8px;
+// navbar
+$navbarColor: $white;
+$navbarHeight: 60px;
+// header
+$headerHeight: 100vh;
+// card
+$cardContentPadding: 24px;
+// forms
+$inputPadding: 8px;
+// utility
+$ease: all 0.3s ease;
+$ease-in: all 0.3s ease-in;
+$ease-out: all 0.3s ease-out;
+$overlay: linear-gradient(to bottom, transparent 48%, rgba(0, 0, 0, 0.8) 100%);
+$elevation: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12),
+  0 1px 5px 0 rgba(0, 0, 0, 0.2);
+$textElevation: 0 2px 2px rgba(0, 0, 0, 0.56);

@@ -1,0 +1,31 @@
+.grid {
+  display: grid;
+  grid-auto-flow: dense;
+  &:not(.dense) {
+    &:not(.wide) {
+      grid-column-gap: $grid-gap;
+      grid-row-gap: $grid-gap;
+    }
+    &.wide {
+      grid-gap: $grid-gap * 2;
+    }
+  }
+  &.col-6-4 {
+    grid-template-columns: 0.6fr 0.4fr;
+    @extend .gridMobile;
+  }
+  $i: 1;
+  @while $i <=$columns {
+    &.col-#{$i} {
+      grid-template-columns: repeat($i, 1fr);
+      @extend .gridMobile;
+    }
+    $i: $i + 1;
+  }
+}
+
+.gridMobile {
+  @media #{$tablet-down} {
+    grid-template-columns: 100%;
+  }
+}

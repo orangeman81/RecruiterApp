@@ -1,0 +1,156 @@
+#hero {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &:not(.small) {
+    height: $headerHeight;
+    @media #{$tablet-down} {
+      height: 50vh;
+    }
+  }
+
+  &.small {
+    height: 66vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media #{$tablet-down} {
+      height: 33vh;
+    }
+  }
+
+  &:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 48%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+    z-index: 0;
+  }
+
+  img {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    z-index: 1;
+  }
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: $secondary;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.sectionHeader {
+  @extend .flex;
+  @extend .f-ac;
+  width: 100%;
+  main & {
+    margin-top: -11vw;
+  }
+  @media #{$tablet-up} {
+    height: 15vw;
+    main &,
+    section:nth-child(odd) & {
+      background: url("../assets/header.svg") no-repeat;
+    }
+    section:nth-child(even) & {
+      background: url("../assets/header-inverse.svg") no-repeat;
+    }
+    body > & {
+      background: url("../assets/pageHeader.svg") no-repeat;
+    }
+  }
+
+  @media #{$tablet-down} {
+    padding: 56px 0;
+    main &,
+    section:nth-child(odd) &,
+    body > & {
+      background: $color;
+    }
+    section:nth-child(even) & {
+      background: $secondary;
+    }
+  }
+
+  background-size: contain;
+  box-sizing: border-box;
+  h1,
+  h2 {
+    @extend .white;
+    @extend .container;
+  }
+}
+
+.sectionContainer {
+  @extend .container;
+  @extend .grid;
+  @extend .pt-56;
+  @extend .pb-56;
+  h3 {
+    @extend .mb-24;
+  }
+  span {
+    @extend .f-column-center;
+  }
+}
+
+.carousel {
+  @extend .container;
+  @extend .pt-72;
+  @extend .pb-72;
+  @extend .relative;
+  .control {
+    @extend .absolute;
+    @extend .hide-mobile;
+    top: 50%;
+    &.left {
+      left: -5vw;
+      @media #{$tablet-down} {
+        left: -2vw;
+      }
+    }
+
+    &.right {
+      right: -5vw;
+      @media #{$tablet-down} {
+        right: -2vw;
+      }
+    }
+  }
+}
+
+.dialog {
+  @extend .f-layout-c;
+  @extend .fixed;
+  @extend .show-up;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  video {
+    width: 50vw;
+  }
+}
+
+.navigator {
+  @extend .fixed;
+  bottom: 24px;
+  right: 24px;
+  @media #{$tablet-down} {
+    right: 16px;
+  }
+}

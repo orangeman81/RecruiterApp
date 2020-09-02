@@ -1,0 +1,133 @@
+html {
+  font-weight: $regular;
+  font-family: $body-family;
+  text-rendering: optimizeLegibility;
+  line-height: $line-height;
+  color: $off-black;
+
+  @media screen and (min-width: 0) {
+    font-size: $body-size;
+  }
+
+  @media screen and (min-width: $tablet) {
+    font-size: $body-size + 2;
+  }
+
+  @media screen and (min-width: $desktop) {
+    font-size: $body-size + 4;
+  }
+}
+
+// headings
+h1 {
+  font-size: $h1-size;
+}
+
+h2 {
+  font-size: $h2-size;
+}
+
+h3 {
+  font-size: $h3-size;
+}
+
+h4,
+.title {
+  font-size: $h4-size;
+}
+
+h5 {
+  font-size: $h5-size;
+}
+
+h6 {
+  font-size: $h6-size;
+}
+
+small {
+  font-size: $h6-size;
+  letter-spacing: 0.5px;
+}
+
+strong {
+  @extend .bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: $dGray;
+  font-family: $headings-family;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+h5,
+h6 {
+  @extend .bold;
+}
+
+p {
+  margin: 0.25rem 0;
+  line-height: inherit;
+}
+
+ul,
+ol {
+  &.wide {
+    line-height: inherit;
+    li {
+      @extend .mb-16;
+      @extend .bold;
+    }
+  }
+}
+
+address {
+  font-style: normal;
+}
+
+time {
+  font-size: inherit;
+  font-weight: $bold;
+  color: $gray;
+}
+
+// links
+a {
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+
+  &:not(.btn) {
+    color: $darkColor;
+    font-weight: $bold;
+    @extend .ease;
+
+    &:hover,
+    &.active {
+      color: $darkSecondary;
+    }
+  }
+}
+
+// hr
+hr {
+  width: 100%;
+  border: 1px solid $lineGray;
+}
+
+// error text
+.error {
+  font-size: $h5-size;
+  color: #f44336;
+  text-align: center;
+  letter-spacing: 1px;
+  padding: 8px 0;
+  font-weight: $bold;
+  animation: slide-out 0.3s ease-out;
+}

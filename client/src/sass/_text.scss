@@ -1,0 +1,40 @@
+// text
+.textCenter {
+  text-align: center;
+}
+
+.textUppercase {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.textWithLine {
+  @extend .relative;
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    position: absolute;
+    top: 1.5em;
+    left: 0;
+    height: 3px;
+    background: $color;
+    animation: emphasis 0.3s ease;
+  }
+}
+
+.textColumns {
+  column-count: 2;
+  column-gap: 24px;
+  display: inline-block;
+  p:not(:last-child) {
+    @extend .mb-8;
+  }
+  @media #{$tablet-down} {
+    column-count: 1;
+  }
+}
+
+.bold {
+  font-weight: $bold;
+}
