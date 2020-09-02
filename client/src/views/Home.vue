@@ -1,23 +1,18 @@
 <template>
-  <header>
-    <h1>Records</h1>
-    <hr />
+<div class="f-l-center">
+  <figure>
+    <img width="156" src="../assets/logo.png" alt="logo">
+  </figure>
+  <header class="mt-24">
+    <h1>Recruiter</h1>
   </header>
-  <RecordsProvider>
-    <Records />
-  </RecordsProvider>
+</div>
 </template>
 
 <script lang="ts">
-import Records from "../components/Records.vue";
-import RecordsProvider from "../components/providers/RecordsProvider.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Home",
-  components: {
-    RecordsProvider,
-    Records
-  }
+  name: "Home"
 });
 </script>

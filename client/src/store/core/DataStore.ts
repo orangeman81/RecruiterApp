@@ -9,7 +9,11 @@ export class DataStore<T> extends Store<DataState<T>> {
     "Content-Type": "application/json",
   };
 
-  constructor(initialState: DataState<T>, public url: string) {
+  constructor(
+    initialState: DataState<T>,
+    public url: string,
+    public name: string
+  ) {
     super(initialState);
   }
 

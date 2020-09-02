@@ -4,20 +4,28 @@
       <h1>Create</h1>
       <hr />
     </header>
-    <RecordsProvider>
+    <Provider :store="RecordsStore">
       <RecordForm />
-    </RecordsProvider>
+    </Provider>
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import Provider from "../components/Provider.vue";
 import RecordForm from "../components/RecordForm.vue";
+import { RecordsStore } from "../store/index";
 
 export default defineComponent({
   name: "Create",
   components: {
+    Provider,
     RecordForm
+  },
+  data() {
+    return {
+      RecordsStore
+    };
   }
 });
 </script>

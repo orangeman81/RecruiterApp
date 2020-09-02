@@ -1,11 +1,5 @@
 import { BehaviorSubject, Observable } from "rxjs";
-import {
-  pluck,
-  distinctUntilChanged,
-  shareReplay,
-  tap,
-  scan,
-} from "rxjs/operators";
+import { pluck, distinctUntilChanged, shareReplay, scan } from "rxjs/operators";
 
 export abstract class Store<T> {
   private state$: BehaviorSubject<T>;
@@ -27,10 +21,7 @@ export abstract class Store<T> {
       scan((acc, curr) => {
         return { ...acc, ...curr };
       }, this.initialState),
-      shareReplay(),
-      tap((state: T) =>
-        console.log(`%c ${Store.name}`, "color: #ff5722", state)
-      )
+      shareReplay()
     );
   }
 

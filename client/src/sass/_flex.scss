@@ -69,8 +69,14 @@
   @extend .f-ac;
 }
 
-.f-l-center {
+.f-l-jc {
   @extend .flex;
   @extend .f-jc;
   @extend .f-ac;
+}
+
+.f-l-center {
+  @extend .f-column;
+  @extend .f-l-jc;
+  @extend .fullHeight;
 }

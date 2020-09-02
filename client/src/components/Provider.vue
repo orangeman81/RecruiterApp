@@ -4,12 +4,14 @@
 
 <script lang="ts">
 import { defineComponent, provide } from "vue";
-import { RecordsStore } from "../../store/index";
 
 export default defineComponent({
-  name: "RecordsProvider",
-  setup() {
-    provide("RecordsStore", RecordsStore);
+  name: "Provider",
+  props: {
+    store: Object
+  },
+  setup(props) {
+    provide("Store", props.store);
   }
 });
 </script>

@@ -15,7 +15,8 @@ const RecordsStore: DataStore<Record> = new DataStore<Record>(
         total: 0
     }
   },
-  "http://localhost:3000/records/"
+  "http://localhost:3000/records/",
+  "Records Store"
 );
 
 (async () => {

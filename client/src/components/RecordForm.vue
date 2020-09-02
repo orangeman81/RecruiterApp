@@ -41,9 +41,9 @@ export default defineComponent({
     data: { type: Record }
   },
   setup(props) {
-    const store: any = inject("RecordsStore");
+    const store: any = inject("Store");
     const formData = ref<Record>(new Record());
-    let sub: Subscription;
+    let sub: Subscription = new Subscription();
 
     onMounted(() => {
       if (props.data) {
@@ -55,7 +55,8 @@ export default defineComponent({
     });
 
     const submit = () => {
-      sub = store.$add(formData.value)
+      sub = store
+        .$add(formData.value)
         .pipe(finalize(() => router.push("/")))
         .subscribe();
     };
