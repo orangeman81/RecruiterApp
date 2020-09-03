@@ -6,14 +6,14 @@ $darkColor: #99aa00;
 $secondary: #ff9800;
 $lightSecondary: #ffc947;
 $darkSecondary: #c66900;
-$warn: #ff5252;
-$success: #69f0ae;
+$warn: #f44336;
+$success: #4caf50;
 $gray: #707070;
-$bodyGray: #fafafa;
-$lineGray: rgba(0, 0, 0, 0.12);
+$bodyColor: #eeeeee;
+$off-gray: rgba(125, 125, 125, 0.12);
 $lGray: #f5f5f5;
 $dGray: #424242;
-$navGray: #212121;
+$xdGray: #212121;
 $white: #ffffff;
 $off-white: rgba(255, 255, 255, 0.8);
 $off-black: rgba(0, 0, 0, 0.8);
@@ -28,11 +28,12 @@ $textField-size: 1rem;
 $body-size: 14px;
 $line-height: 1.6;
 // font family
-$body-family: "Lato", sans-serif;
-$headings-family: "PT Sans", sans-serif;
+$body-family: "Open Sans", sans-serif;
+$headings-family: "Fira Sans", sans-serif;
 // font weight
 $light: 300;
 $regular: 400;
+$medium: 600;
 $bold: 700;
 // grid
 $columns: 12;
@@ -49,17 +50,16 @@ $desktop-down: "only screen and (max-width : #{$desktop})";
 $laptop-down: "only screen and (max-width : #{$laptop})";
 $tablet-down: "only screen and (max-width : #{$tablet})";
 // box model
-$border: solid 2px $gray;
-$radius: 8px;
+$border: solid 2px $darkColor;
+$radius: 24px;
 // navbar
-$navbarColor: $white;
 $navbarHeight: 60px;
 // header
 $headerHeight: 100vh;
 // card
 $cardContentPadding: 24px;
 // forms
-$inputPadding: 8px;
+$inputPadding: 8px 16px;
 // utility
 $ease: all 0.3s ease;
 $ease-in: all 0.3s ease-in;
@@ -68,3 +68,8 @@ $overlay: linear-gradient(to bottom, transparent 48%, rgba(0, 0, 0, 0.8) 100%);
 $elevation: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12),
   0 1px 5px 0 rgba(0, 0, 0, 0.2);
 $textElevation: 0 2px 2px rgba(0, 0, 0, 0.56);
+//neumorphism
+$neumorphism: 20px 20px 60px darken($bodyColor, 10%),
+  -20px -20px 60px lighten($bodyColor, 6.5%);
+$neumorphismAlt: inset 20px 20px 60px darken($bodyColor, 10%),
+  inset -20px -20px 60px lighten($bodyColor, 6.5%);

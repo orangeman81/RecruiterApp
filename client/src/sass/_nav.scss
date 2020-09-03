@@ -1,13 +1,12 @@
 nav#mainNavbar {
   @extend .relative;
   @extend .mb-56;
+  @extend .neu;
   height: $navbarHeight;
   width: 100vw;
-  background: #fff;
   top: 0;
   z-index: 999;
   transition: all 0.3s ease-in-out;
-  box-shadow: $elevation;
 
   ul {
     a {
@@ -47,7 +46,7 @@ nav#mainNavbar {
 
   .mobile {
     @extend .hide-laptop;
-    @extend .f-l-center;
+    @extend .f-l-jc;
 
     & > a {
       @extend .flex;

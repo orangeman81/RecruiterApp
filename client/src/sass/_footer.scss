@@ -2,12 +2,8 @@
   @extend .w-100;
   @extend .p-56;
   @extend .mt-56;
-  background: $navGray;
-  h4,
-  p,
-  address {
-    @extend .white;
-  }
+  @extend .neu;
+
   .description {
     @extend .flex;
     @extend .f-column;
@@ -15,12 +11,11 @@
   }
   .copyright {
     @extend .mt-56;
-    @extend .white;
     @extend .f-l-center;
     @extend .pl-16;
     @extend .pr-16;
     height: 56px;
-    background: $lineGray;
+    background: $off-gray;
     a {
       @extend .secondary;
     }

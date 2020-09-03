@@ -1,29 +1,31 @@
 <template>
   <form @submit.prevent="submit()">
     <div class="grid col-2">
-      <div class="formGroup">
+      <span>
         <label>Name</label>
         <input type="text" v-model="formData.name" required />
-      </div>
-      <div class="formGroup">
-        <label>Description</label>
-        <input type="text" v-model="formData.description" required />
-      </div>
-      <div class="formGroup">
+      </span>
+      <span>
         <label>Value</label>
         <input type="number" v-model="formData.value" required />
-      </div>
-      <div class="formGroup">
+      </span>
+      <span>
         <label>Type</label>
         <input type="text" v-model="formData.type" required />
-      </div>
-      <div class="formGroup">
+      </span>
+      <span>
         <label>Code</label>
         <input type="text" v-model="formData.code" required />
-      </div>
+      </span>
+      <span>
+        <label>Description</label>
+        <textarea type="text" v-model="formData.description" required />
+      </span>
     </div>
     <div class="actions mt-56">
-      <button type="submit">Save</button>
+      <button type="submit" class="rounded">
+        <span class="material-icons">save</span>
+      </button>
     </div>
   </form>
 </template>

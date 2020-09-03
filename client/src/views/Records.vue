@@ -1,7 +1,6 @@
 <template>
   <header>
     <h1>Records</h1>
-    <hr />
   </header>
   <Provider :store="RecordsStore">
     <RecordsList />

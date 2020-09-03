@@ -2,9 +2,13 @@
   <div class="card mt-24">
     <ul class="list">
       <li v-for="item in records" :key="item.id">
-        <span>{{ item.name }}</span>
         <span>
-          <button @click="remove(item._id)">delete</button>
+          <h4>{{ item.name }}</h4>
+        </span>
+        <span>
+          <button @click="remove(item._id)" class="rounded">
+            <span class="material-icons">delete</span>
+          </button>
         </span>
       </li>
     </ul>
@@ -27,7 +31,7 @@ export default defineComponent({
     onMounted(() => {
       sub = store.$select(["data"]).subscribe((state: Record[]) => {
         Logger.info(`${store.name} injected`, [state]);
-        Logger.warn("Error", "lorem ipsum dolor sit amet")
+        Logger.warn("Error", "lorem ipsum dolor sit amet");
         records.value = state;
       });
     });

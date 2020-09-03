@@ -62,7 +62,7 @@
 
 //animation utilities
 .emphasis {
-  animation: emphasis 0.3s ease;
+  animation: emphasis 0.4s both ease-out;
 }
 
 .show-up {
@@ -96,3 +96,4 @@
 }
 
 @include make-spaces();
+@include make-neumorphism(20px, 60px, 10%);

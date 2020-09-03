@@ -16,13 +16,13 @@
 }
 
 .primaryBkg {
-  background: linear-gradient(fade-out($lightColor, 0.5), transparent);
+  background: $lightColor;
 }
 
 .secondaryBkg {
-  background: linear-gradient(fade-out($lightSecondary, 0.5), transparent);
+  background: $lightSecondary;
 }
 
-.grayBkg {
-  background: $bodyGray;
+.bodyBkg {
+  background: $bodyColor;
 }

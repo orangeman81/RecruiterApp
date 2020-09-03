@@ -1,10 +1,10 @@
 <template>
 <div class="f-l-center">
   <figure>
-    <img width="156" src="../assets/logo.png" alt="logo">
+    <img width="288" src="../assets/logo.svg" alt="logo">
   </figure>
   <header class="mt-24">
-    <h1>Recruiter</h1>
+    <h1>Human resources utility app</h1>
   </header>
 </div>
 </template>

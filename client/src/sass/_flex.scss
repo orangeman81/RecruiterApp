@@ -78,5 +78,5 @@
 .f-l-center {
   @extend .f-column;
   @extend .f-l-jc;
-  @extend .fullHeight;
+  min-height: 50vh;
 }

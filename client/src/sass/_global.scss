@@ -15,7 +15,7 @@ ul {
 
 body {
   overflow-x: hidden;
-  background-color: $bodyGray;
+  background-color: $bodyColor;
 }
 
 // core elements relative position
@@ -31,13 +31,6 @@ article {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-
-  a,
-  button {
-    &:hover {
-      animation: emphasis 0.4s both ease-out;
-    }
-  }
 
   a:not(:last-child),
   button:not(:last-child) {

@@ -44,3 +44,56 @@ $space-prefixes: (
     }
   }
 }
+
+@mixin make-neumorphism($range, $blur, $percentage) {
+  $range-s: $range / 1.5;
+  $blur-s: $blur / 1.5;
+  $percentage-a: $percentage / 1.5;
+  $percentage-s: $percentage-a / 1.5;
+
+  .neu-default {
+    background: $bodyColor;
+    border: solid 1px $off-gray;
+    border-radius: $radius;
+  }
+
+  .neu {
+    @extend .neu-default;
+    box-shadow: $range $range $blur darken($bodyColor, $percentage),
+      (-$range) (-$range) $blur lighten($bodyColor, $percentage-a);
+  }
+
+  .neu-inverse {
+    @extend .neu-default;
+    box-shadow: inset $range $range $blur darken($bodyColor, $percentage),
+      inset (-$range) (-$range) $blur lighten($bodyColor, $percentage-a);
+  }
+
+  .neu-inverse-action {
+    @extend .neu-default;
+    @extend .ease;
+    will-change: box-shadow;
+    box-shadow: inset $range-s $range-s $blur-s
+        darken($bodyColor, $percentage-a),
+      inset (-$range-s) (-$range-s) $blur-s lighten($bodyColor, $percentage-s);
+    &:hover,
+    &:focus {
+      box-shadow: inset $range $range $blur darken($bodyColor, $percentage),
+        inset (-$range) (-$range) $blur lighten($bodyColor, $percentage-a);
+    }
+  }
+
+  .neu-action {
+    @extend .neu-default;
+    @extend .ease;
+    will-change: box-shadow;
+    box-shadow: $range-s $range-s $blur-s darken($bodyColor, $percentage-a),
+      (-$range-s) (-$range-s) $blur-s lighten($bodyColor, $percentage-s);
+    &:hover,
+    &:focus {
+      box-shadow: inset $range-s $range-s $blur-s
+          darken($bodyColor, $percentage-a),
+        inset (-$range-s) (-$range-s) $blur-s lighten($bodyColor, $percentage-s);
+    }
+  }
+}

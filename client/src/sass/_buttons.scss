@@ -9,59 +9,25 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  border: none;
   font-size: $h6-size;
+  transition: box-shadow 0.6s ease;
+  margin: 0;
+  font-weight: $bold;
+  line-height: 1em;
 }
 
 button,
 .btn {
   @extend .btn-default;
-  @extend .gray;
-  transition: all 0.3s ease;
-  margin: 0;
-  font-weight: $bold;
-  line-height: 1em;
-
-  &:not(.filled),
-  &:not(.rounded) {
-    padding: 8px 12px;
-    &:not([disabled]) {
-      will-change: border-color, color;
-      border: $border;
-      background: transparent;
-      &:hover,
-      &.active {
-        @extend .secondary;
-        @extend .emphasis;
-        border-color: $secondary;
-      }
-    }
-  }
-
-  &.filled,
-  &.rounded {
-    padding: 8px;
-  }
-
-  &.filled {
-    @extend .elevation;
-    &:not([disabled]) {
-      background: $color;
-      color: $white;
-      &:hover,
-      &.active {
-        @extend .emphasis;
-        background: $secondary;
-      }
-    }
-  }
-
-  &:not(.rounded) {
-    border-radius: $radius;
+  @extend .neu-action;
+  &:hover {
+    @extend .emphasis;
   }
 
   &.rounded {
     border-radius: 50%;
+    height: 62px;
+    width: 62px;
   }
 
   &[disabled] {
