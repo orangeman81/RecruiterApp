@@ -14,7 +14,7 @@ ul.list {
     }
     @media screen and (max-width: $tablet) {
       flex-direction: column;
-      span:last-child {
+      & > span:last-child {
         margin-top: 24px;
       }
     }

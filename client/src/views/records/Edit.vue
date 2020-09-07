@@ -12,12 +12,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Provider from "../components/Provider.vue";
-import RecordForm from "../components/RecordForm.vue";
-import { RecordsStore } from "../store/index";
+import Provider from "../../components/Provider.vue";
+import RecordForm from "./RecordForm.vue";
+import { RecordsStore } from "../../store/index";
 
 export default defineComponent({
-  name: "Create",
+  name: "EditRecord",
   components: {
     Provider,
     RecordForm

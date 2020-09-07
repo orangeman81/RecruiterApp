@@ -20,6 +20,8 @@ button,
 .btn {
   @extend .btn-default;
   @extend .neu-action;
+  @extend .p-16;
+  @extend .gray;
   &:hover {
     @extend .emphasis;
   }

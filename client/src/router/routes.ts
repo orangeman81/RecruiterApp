@@ -1,5 +1,4 @@
 import Home from "../views/Home.vue";
-import Records from "../views/Records.vue";
 import { RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
@@ -11,13 +10,31 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/records",
     name: "Records",
-    component: () => import("../views/Records.vue"),
-  },
-  {
-    path: "/create",
-    name: "Create",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Create.vue"),
+      import(/* webpackChunkName: "records" */ "../views/records/Records.vue"),
+    children: [
+      {
+        path: "",
+        component: () =>
+          import(
+            /* webpackChunkName: "records" */ "../views/records/RecordsList.vue"
+          ),
+      },
+      {
+        path: "edit",
+        component: () =>
+          import(/* webpackChunkName: "records" */ "../views/records/Edit.vue"),
+        props: true,
+      },
+      {
+        path: "details/:id",
+        component: () =>
+          import(
+            /* webpackChunkName: "records" */ "../views/records/Details.vue"
+          ),
+        props: true,
+      },
+    ],
   },
 ];
 

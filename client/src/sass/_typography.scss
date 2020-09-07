@@ -10,11 +10,11 @@ html {
   }
 
   @media screen and (min-width: $tablet) {
-    font-size: $body-size + 2;
+    font-size: $body-size + 1;
   }
 
   @media screen and (min-width: $desktop) {
-    font-size: $body-size + 4;
+    font-size: $body-size + 2;
   }
 }
 
@@ -64,11 +64,7 @@ h6 {
   font-family: $headings-family;
   line-height: 1.2;
   letter-spacing: 1px;
-}
-
-h5,
-h6 {
-  @extend .bold;
+  font-weight: $semiBold;
 }
 
 p {

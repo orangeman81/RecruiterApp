@@ -8,6 +8,10 @@
   letter-spacing: 1px;
 }
 
+.textCap {
+  text-transform: capitalize;
+}
+
 .textWithLine {
   @extend .relative;
   &:after {

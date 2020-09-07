@@ -32,10 +32,10 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, onUnmounted, inject } from "vue";
-import { Record } from "../../../models/record";
+import { Record } from "../../../../models/record";
 import { Subscription } from "rxjs";
 import { finalize } from "rxjs/operators";
-import router from "../router";
+import router from "../../router";
 
 export default defineComponent({
   name: "RecordForm",
