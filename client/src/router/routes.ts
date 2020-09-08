@@ -16,12 +16,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "",
         component: () =>
-          import(
-            /* webpackChunkName: "records" */ "../views/records/RecordsList.vue"
-          ),
+          import(/* webpackChunkName: "records" */ "../views/records/List.vue"),
       },
       {
-        path: "edit",
+        path: "edit/:id",
         component: () =>
           import(/* webpackChunkName: "records" */ "../views/records/Edit.vue"),
         props: true,

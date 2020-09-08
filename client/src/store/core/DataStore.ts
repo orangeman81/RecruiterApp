@@ -1,10 +1,11 @@
 import { Store } from "./store";
-import { ajax } from "rxjs/ajax";
+import { ajax, AjaxResponse } from "rxjs/ajax";
 import { tap, take, map, filter } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { DataState } from "../models/DataState";
+import { DataShape } from "../../../../models/DataShape";
 
-export class DataStore<T> extends Store<DataState<T>> {
+export class DataStore<T extends DataShape> extends Store<DataState<T>> {
   private headers = {
     "Content-Type": "application/json",
   };
@@ -17,8 +18,8 @@ export class DataStore<T> extends Store<DataState<T>> {
     super(initialState);
   }
 
-  public $load(): Observable<T[]> {
-    const $request = ajax.getJSON(this.url).pipe(
+  public $load(): Observable<unknown> {
+    const $request = ajax.getJSON<AjaxResponse>(this.url).pipe(
       filter(() => !this.state.loaded),
       tap((res: unknown) => {
         this.set({
@@ -29,7 +30,15 @@ export class DataStore<T> extends Store<DataState<T>> {
       take(1)
     );
 
-    return $request as Observable<T[]>;
+    return $request;
+  }
+
+  public $find(id: string): Observable<T | unknown> {
+    const $results = this.$select(["data"]).pipe(
+      map((state) => state.find((e: T) => e._id === id))
+    );
+
+    return $results;
   }
 
   public $add(payload: T): Observable<T> {
@@ -39,10 +48,10 @@ export class DataStore<T> extends Store<DataState<T>> {
       headers: this.headers,
       body: JSON.stringify(payload),
     }).pipe(
-      map((res: any) => {
-        const newData = [...this.state.data, res.response];
+      map((res: AjaxResponse) => {
+        const newData: T[] = [...this.state.data, res.response] as T[];
         this.push("data", newData);
-        return res as T;
+        return res.response;
       }),
       take(1)
     );
@@ -51,7 +60,7 @@ export class DataStore<T> extends Store<DataState<T>> {
   }
 
   public $remove(id: string): Observable<unknown> {
-    const newData = [...this.state.data.filter((item: any) => item._id != id)];
+    const newData = [...this.state.data.filter((item: T) => item._id != id)];
 
     const $request = ajax({
       url: this.url + id,
@@ -67,21 +76,22 @@ export class DataStore<T> extends Store<DataState<T>> {
     return $request;
   }
 
-  public $update(id: string, payload: unknown): Observable<unknown> {
+  public $update(id: string, payload: T): Observable<unknown> {
     const $request = ajax({
-      url: this.url + `/update/${id}`,
+      url: this.url + id,
       method: "PUT",
       headers: this.headers,
       body: JSON.stringify(payload),
     }).pipe(
-      map((res: any) => {
-        const newData = [
-          ...this.state.data.map((item: any) =>
-            item._id === id ? (item = res.response) : null
-          ),
-        ];
+      map((res: AjaxResponse) => {
+        const newData = this.state.data.map((item) => {
+          if (item._id === id) {
+            item = res.response;
+          }
+          return item;
+        });
         this.push("data", newData);
-        return res;
+        return res.response;
       }),
       take(1)
     );

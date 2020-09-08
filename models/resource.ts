@@ -1,13 +1,16 @@
 import { Skill } from "./skill";
+import { DataShape } from "./DataShape";
 
-export interface Resource {
-    name: string;
-    address: string;
-    phone: string;
-    email: string;
-    education: string;
-    position: string;
-    skills: Skill[];
-    hiredOn: string;
-    rating: number;
+export class Resource {
+  name: string;
+  address: string;
+  phone: string;
+  email: string;
+  education: string;
+  position: string;
+  skills: Skill[];
+  hiredOn: string;
+  rating: number;
 }
+
+export interface ResourceDTO extends Resource, DataShape {}

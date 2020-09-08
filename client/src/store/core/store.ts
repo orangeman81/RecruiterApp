@@ -29,7 +29,7 @@ export abstract class Store<T> {
     return this.$stream.pipe(distinctUntilChanged(), pluck(...selectors));
   }
 
-  public push(prop: string, val: any): void {
+  public push<K extends keyof T>(prop: K, val: unknown): void {
     this.state = { ...this.state, [prop]: val };
   }
 

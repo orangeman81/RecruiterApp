@@ -8,18 +8,41 @@
 </template>
 
 <script lang="ts">
-import RecordsList from "./RecordsList.vue";
 import Provider from "../../components/Provider.vue";
-import { RecordsStore } from "../../store/index";
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, onUnmounted } from "vue";
+import { DataStore } from "../../store/core/DataStore";
+import { Record, RecordDTO } from "../../../../models/record";
+import { Subscription } from "rxjs";
 
 export default defineComponent({
   name: "Records",
   components: {
-    Provider,
-    RecordsList
+    Provider
   },
-  data() {
+  setup() {
+    const RecordsStore: DataStore<RecordDTO> = new DataStore<RecordDTO>(
+      {
+        data: [],
+        loaded: false,
+        pagination: {
+          page: 0,
+          total: 0
+        }
+      },
+      "http://localhost:3000/records/",
+      "Records Store"
+    );
+
+    let sub: Subscription;
+
+    onMounted(() => {
+      sub = RecordsStore.$load().subscribe();
+    });
+
+    onUnmounted(() => {
+      sub.unsubscribe();
+    });
+
     return {
       RecordsStore
     };

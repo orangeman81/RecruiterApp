@@ -1,26 +1,7 @@
 <template>
-  <div class="card mt-24">
-    <ul class="list">
-      <li v-for="item in records" :key="item.id">
-        <span>
-          <h4>{{ item.name }}</h4>
-        </span>
-        <span class="actions">
-          <router-link :to="'/records/details/' + item._id" class="btn rounded">
-            <span class="material-icons">info</span>
-          </router-link>
-          <router-link to="/records/edit" class="btn rounded">
-            <span class="material-icons">update</span>
-          </router-link>
-          <button @click="remove(item._id)" class="rounded">
-            <span class="material-icons">delete</span>
-          </button>
-        </span>
-      </li>
-    </ul>
-  </div>
+  <DataList url="/records/" :data="records" @remove="remove" />
   <div class="actions mt-56">
-    <router-link to="/records/edit" class="btn rounded">
+    <router-link to="/records/edit/new" class="btn rounded">
       <span class="material-icons">add</span>
     </router-link>
   </div>
@@ -28,12 +9,16 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, onUnmounted, inject } from "vue";
+import DataList from "../../components/DataList.vue";
 import { Record } from "../../../../models/record";
 import { Subscription } from "rxjs";
 import Logger from "../../utility/logger";
 
 export default defineComponent({
   name: "RecordsList",
+  components: {
+    DataList
+  },
   setup() {
     let sub: Subscription;
     const store: any = inject("Store");

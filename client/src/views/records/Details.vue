@@ -21,6 +21,7 @@ import { defineComponent, ref, inject, onMounted, onUnmounted } from "vue";
 import { Record } from "../../../../models/record";
 import { Subscription } from "rxjs";
 import Logger from "../../utility/logger";
+import { map } from "rxjs/operators";
 
 export default defineComponent({
   name: "RecordDetails",
@@ -31,19 +32,21 @@ export default defineComponent({
     const details = ref<Record>(new Record(""));
 
     onMounted(() => {
-      sub = store.$select(["data"]).subscribe((state: Record[]) => {
-        let results: Record = state.find(
-          (r: Record) => r._id === props.id
-        ) as Record;
-        details.value = {
-          name: results.name,
-          description: results.description,
-          value: results.value,
-          type: results.type,
-          code: results.code
-        };
-        Logger.info("Details: ", [details.value]);
-      });
+      sub = store
+        .$find(props.id)
+        .pipe(
+          map((res: Record) => ({
+            name: res.name,
+            description: res.description,
+            value: res.value,
+            type: res.type,
+            code: res.code
+          }))
+        )
+        .subscribe((res: Record) => {
+          details.value = res;
+          Logger.info("Details: ", [details.value]);
+        });
     });
 
     onUnmounted(() => {
