@@ -19,7 +19,10 @@ export class RecordsService {
   }
 
   async update(record: Record, id: string): Promise<any> {
-    return this.recModel.findOneAndUpdate({ _id: id }, record, { new: true });
+    return this.recModel.findOneAndUpdate({ _id: id }, record, {
+      new: true,
+      useFindAndModify: false,
+    });
   }
 
   async findAll(): Promise<Record[]> {

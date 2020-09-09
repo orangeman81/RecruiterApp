@@ -11,7 +11,7 @@
 import Provider from "../../components/Provider.vue";
 import { defineComponent, onMounted, onUnmounted } from "vue";
 import { DataStore } from "../../store/core/DataStore";
-import { Record, RecordDTO } from "../../../../models/record";
+import { RecordDTO } from "../../../../models/record";
 import { Subscription } from "rxjs";
 
 export default defineComponent({

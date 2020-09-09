@@ -6,25 +6,20 @@
         <span class="material-icons">list</span>
       </router-link>
     </header>
-    <ul class="list">
-      <li v-for="(value, name) in details">
-        <span>
-          <h4 class="textCap">{{name}}</h4>
-        </span>
-        <span>{{value}}</span>
-      </li>
-    </ul>
+    <DetailsList :details="details" />
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref, inject, onMounted, onUnmounted } from "vue";
-import { Record } from "../../../../models/record";
+import DetailsList from "../../components/DetailsList.vue";
+import { Record, RecordDTO } from "../../../../models/record";
 import { Subscription } from "rxjs";
 import Logger from "../../utility/logger";
 import { map } from "rxjs/operators";
 
 export default defineComponent({
   name: "RecordDetails",
+  components: { DetailsList },
   props: ["id"],
   setup(props) {
     let sub: Subscription;
@@ -35,13 +30,16 @@ export default defineComponent({
       sub = store
         .$find(props.id)
         .pipe(
-          map((res: Record) => ({
-            name: res.name,
-            description: res.description,
-            value: res.value,
-            type: res.type,
-            code: res.code
-          }))
+          map(
+            (res: RecordDTO) =>
+              new Record(
+                res.name,
+                res.description,
+                res.value,
+                res.type,
+                res.code
+              )
+          )
         )
         .subscribe((res: Record) => {
           details.value = res;

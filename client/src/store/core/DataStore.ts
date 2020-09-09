@@ -19,7 +19,7 @@ export class DataStore<T extends DataShape> extends Store<DataState<T>> {
   }
 
   public $load(): Observable<unknown> {
-    const $request = ajax.getJSON<AjaxResponse>(this.url).pipe(
+    const $request = ajax.getJSON(this.url).pipe(
       filter(() => !this.state.loaded),
       tap((res: unknown) => {
         this.set({

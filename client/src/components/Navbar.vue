@@ -6,7 +6,7 @@
       </a>
       <ul>
         <li v-for="route in routes" :key="route.name">
-          <router-link :to="route.path">{{ route.name }}</router-link>
+          <router-link :to="route.path" active-class="active">{{ route.name }}</router-link>
         </li>
       </ul>
     </div>

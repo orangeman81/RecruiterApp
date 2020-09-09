@@ -1,6 +1,5 @@
 export interface DataShape {
   _id: string;
-  created_at: string;
+  createdAt: string;
   updatedAt: string;
-  __v: string;
 }
