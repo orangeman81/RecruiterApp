@@ -14,20 +14,36 @@
             <input type="text" v-model="formData.name" required />
           </span>
           <span>
-            <label>Value</label>
-            <input type="number" v-model="formData.value" required />
+            <label>Address</label>
+            <input type="text" v-model="formData.address" required />
           </span>
           <span>
-            <label>Type</label>
-            <input type="text" v-model="formData.type" required />
+            <label>Phone</label>
+            <input type="text" v-model="formData.phone" required />
           </span>
           <span>
-            <label>Code</label>
-            <input type="text" v-model="formData.code" required />
+            <label>Email</label>
+            <input type="email" v-model="formData.email" required />
           </span>
           <span>
-            <label>Description</label>
-            <textarea v-model="formData.description" required />
+            <label>Education</label>
+            <input type="text" v-model="formData.education" required />
+          </span>
+          <span>
+            <label>Position</label>
+            <input type="text" v-model="formData.position" required />
+          </span>
+          <span>
+            <label>Skills</label>
+            <input type="text" v-model="formData.skills" required />
+          </span>
+          <span>
+            <label>Hired on</label>
+            <input type="date" v-model="formData.hiredOn" required />
+          </span>
+          <span>
+            <label>Rating</label>
+            <input type="number" v-model="formData.rating" max="5" required />
           </span>
         </div>
         <div class="actions mt-24">
@@ -44,22 +60,22 @@
 import { Subscription } from "rxjs";
 import { finalize } from "rxjs/operators";
 import { defineComponent, inject, onMounted, onUnmounted, ref } from "vue";
-import { Record, RecordDTO } from "../../../../models/record";
+import { Resource, ResourceDTO } from "../../../../models/resource";
 import router from "../../router";
 
 export default defineComponent({
-  name: "EditRecord",
+  name: "EditResource",
   props: {
     id: { type: String }
   },
   setup(props) {
     const store: any = inject("Store");
-    const formData = ref<Record>(new Record());
+    const formData = ref<Resource>(new Resource());
     let sub: Subscription = new Subscription();
 
     onMounted(() => {
       if (props.id != "new") {
-        sub = store.$find(props.id).subscribe((res: RecordDTO) => {
+        sub = store.$find(props.id).subscribe((res: ResourceDTO) => {
           formData.value = res;
         });
       }
@@ -72,12 +88,12 @@ export default defineComponent({
       if (props.id === "new") {
         sub = store
           .$add(formData.value)
-          .pipe(finalize(() => router.push("/records")))
+          .pipe(finalize(() => router.push("/resources")))
           .subscribe();
       } else {
         sub = store
           .$update(props.id, formData.value)
-          .pipe(finalize(() => router.push("/records")))
+          .pipe(finalize(() => router.push("/resources")))
           .subscribe();
       }
     };

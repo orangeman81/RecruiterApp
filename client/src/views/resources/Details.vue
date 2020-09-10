@@ -12,38 +12,25 @@
 <script lang="ts">
 import { defineComponent, ref, inject, onMounted, onUnmounted } from "vue";
 import DetailsList from "../../components/DetailsList.vue";
-import { Record, RecordDTO } from "../../../../models/record";
+import { Resource, ResourceDTO } from "../../../../models/resource";
 import { Subscription } from "rxjs";
-import Logger from "../../utility/logger";
 import { map } from "rxjs/operators";
 
 export default defineComponent({
-  name: "RecordDetails",
+  name: "ResourceDetails",
   components: { DetailsList },
   props: ["id"],
   setup(props) {
     let sub: Subscription;
     const store: any = inject("Store");
-    const details = ref<Record>(new Record(""));
+    const details = ref<Resource>();
 
     onMounted(() => {
       sub = store
         .$find(props.id)
-        .pipe(
-          map(
-            (res: RecordDTO) =>
-              new Record(
-                res.name,
-                res.description,
-                res.value,
-                res.type,
-                res.code
-              )
-          )
-        )
-        .subscribe((res: Record) => {
+        .pipe(map((res: ResourceDTO) => new Resource(res)))
+        .subscribe((res: Resource) => {
           details.value = res;
-          Logger.info("Details: ", [details.value]);
         });
     });
 

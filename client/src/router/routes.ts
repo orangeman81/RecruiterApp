@@ -34,6 +34,39 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+    path: "/resources",
+    name: "Resources",
+    component: () =>
+      import(
+        /* webpackChunkName: "resources" */ "../views/resources/Resources.vue"
+      ),
+    children: [
+      {
+        path: "",
+        component: () =>
+          import(
+            /* webpackChunkName: "resources" */ "../views/resources/List.vue"
+          ),
+      },
+      {
+        path: "edit/:id",
+        component: () =>
+          import(
+            /* webpackChunkName: "resources" */ "../views/resources/Edit.vue"
+          ),
+        props: true,
+      },
+      {
+        path: "details/:id",
+        component: () =>
+          import(
+            /* webpackChunkName: "resources" */ "../views/resources/Details.vue"
+          ),
+        props: true,
+      },
+    ],
+  },
 ];
 
 export default routes;

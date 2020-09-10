@@ -1,10 +1,11 @@
-import { Skill } from "./skill";
 import { DataShape } from "./DataShape";
 
 export class Request {
+  name: string;
   position: string;
   seniority: string;
-  skills: Skill[];
+  skills: string;
+  location: string;
 }
 
 export interface RequestDTO extends Request, DataShape {}
