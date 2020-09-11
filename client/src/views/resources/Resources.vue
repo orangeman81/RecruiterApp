@@ -36,7 +36,7 @@ export default defineComponent({
     let sub: Subscription;
 
     onMounted(() => {
-      sub = ResourcesStore.$load().subscribe(console.log);
+      sub = ResourcesStore.$load().subscribe();
     });
 
     onUnmounted(() => {

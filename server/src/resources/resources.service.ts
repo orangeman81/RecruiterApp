@@ -31,6 +31,10 @@ export class ResourcesService {
     return this.recModel.find().exec();
   }
 
+  async search(query: string): Promise<Resource[]> {
+    return this.recModel.find({ $text: { $search: `${query}` } }).exec();
+  }
+
   async findOne(resourceId: string): Promise<Resource> {
     return this.recModel.findOne({ _id: resourceId }).exec();
   }

@@ -7,9 +7,12 @@ import { ResourcesModule } from './resources/resources.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://admin:admin@cluster0.f38ch.mongodb.net/testDb?retryWrites=true&w=majority'),
+    MongooseModule.forRoot(
+      'mongodb+srv://admin:admin@cluster0.f38ch.mongodb.net/testDb?retryWrites=true&w=majority',
+      { useCreateIndex: true, autoIndex: false },
+    ),
     RecordsModule,
-    ResourcesModule
+    ResourcesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

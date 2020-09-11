@@ -1,9 +1,9 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory, raw } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class ResourceS extends Document {
-  @Prop()
+  @Prop(raw({ type: String, index: true }))
   name: string;
 
   @Prop()
@@ -26,9 +26,6 @@ export class ResourceS extends Document {
 
   @Prop()
   hiredOn: string;
-
-  @Prop()
-  rating: number;
 }
 
 export const ResourceSchema = SchemaFactory.createForClass(ResourceS);

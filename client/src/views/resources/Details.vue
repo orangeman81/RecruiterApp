@@ -1,13 +1,20 @@
 <template>
-  <article class="card mt-24">
-    <header class="content f-l-jsb">
-      <h2>Details</h2>
-      <router-link to="../" class="btn rounded">
-        <span class="material-icons">list</span>
-      </router-link>
-    </header>
-    <DetailsList :details="details" />
-  </article>
+  <div class="grid aside">
+    <aside class="card mt-24">
+      <header class="content">
+        <h3>Interview</h3>
+      </header>
+    </aside>
+    <article class="card mt-24">
+      <header class="content f-l-jsb">
+        <h2>Details</h2>
+        <router-link to="../" class="btn rounded">
+          <span class="material-icons">list</span>
+        </router-link>
+      </header>
+      <DetailsList :details="details" />
+    </article>
+  </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref, inject, onMounted, onUnmounted } from "vue";

@@ -9,7 +9,6 @@ export class Resource {
   position: string = "";
   skills: string = "Resource skills";
   hiredOn: string = "";
-  rating: number = 0;
 
   constructor(resource?: ResourceDTO) {
     if (resource) {
@@ -21,7 +20,6 @@ export class Resource {
       this.position = resource.position;
       this.skills = resource.skills;
       this.hiredOn = resource.hiredOn;
-      this.rating = resource.rating;
     }
   }
 }

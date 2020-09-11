@@ -41,6 +41,21 @@ export class DataStore<T extends DataShape> extends Store<DataState<T>> {
     return $results;
   }
 
+  public $search(query: string): Observable<unknown> {
+    const $request = ajax.getJSON(this.url + `search?query=${query}`).pipe(
+      tap((res: unknown) => {
+        console.log(res, this);
+        this.set({
+          data: res as T[],
+          loaded: false,
+        });
+      }),
+      take(1)
+    );
+
+    return $request;
+  }
+
   public $add(payload: T): Observable<T> {
     const $request = ajax({
       url: this.url,

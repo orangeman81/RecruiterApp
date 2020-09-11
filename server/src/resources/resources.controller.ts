@@ -6,6 +6,7 @@ import {
   Post,
   Put,
   Get,
+  Query,
 } from '@nestjs/common';
 import { ResourcesService } from './resources.service';
 import { Resource } from '../../../models/resource';
@@ -32,6 +33,11 @@ export class ResourcesController {
   @Get()
   async findAll(): Promise<Resource[]> {
     return this.resourceService.findAll();
+  }
+
+  @Get('search')
+  async search(@Query("query") query: string): Promise<Resource[]> {
+    return this.resourceService.search(query);
   }
 
   @Get(':id')

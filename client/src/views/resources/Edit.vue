@@ -41,10 +41,6 @@
             <label>Hired on</label>
             <input type="date" v-model="formData.hiredOn" required />
           </span>
-          <span>
-            <label>Rating</label>
-            <input type="number" v-model="formData.rating" max="5" required />
-          </span>
         </div>
         <div class="actions mt-24">
           <button type="submit" class="rounded">
