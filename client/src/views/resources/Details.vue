@@ -19,7 +19,7 @@
 <script lang="ts">
 import { defineComponent, ref, inject, onMounted, onUnmounted } from "vue";
 import DetailsList from "../../components/DetailsList.vue";
-import { Resource, ResourceDTO } from "../../../../models/resource";
+import { ResourceDTO } from "../../../../models/resource";
 import { Subscription } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -30,13 +30,13 @@ export default defineComponent({
   setup(props) {
     let sub: Subscription;
     const store: any = inject("Store");
-    const details = ref<Resource>();
+    const details = ref<ResourceDTO>();
 
     onMounted(() => {
       sub = store
         .$find(props.id)
-        .pipe(map((res: ResourceDTO) => new Resource(res)))
-        .subscribe((res: Resource) => {
+        .pipe(map((res: ResourceDTO) => new ResourceDTO(res)))
+        .subscribe((res: ResourceDTO) => {
           details.value = res;
         });
     });

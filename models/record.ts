@@ -1,6 +1,6 @@
 import { DataShape } from "./DataShape";
 
-export class Record {
+export class RecordDTO {
   constructor(
     public name: string = "",
     public description?: string,
@@ -10,4 +10,4 @@ export class Record {
   ) {}
 }
 
-export interface RecordDTO extends Record, DataShape {}
+export interface Record extends RecordDTO, DataShape {}

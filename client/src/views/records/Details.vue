@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, ref, inject, onMounted, onUnmounted } from "vue";
 import DetailsList from "../../components/DetailsList.vue";
-import { Record, RecordDTO } from "../../../../models/record";
+import { RecordDTO } from "../../../../models/record";
 import { Subscription } from "rxjs";
 import Logger from "../../utility/logger";
 import { map } from "rxjs/operators";
@@ -24,7 +24,7 @@ export default defineComponent({
   setup(props) {
     let sub: Subscription;
     const store: any = inject("Store");
-    const details = ref<Record>(new Record(""));
+    const details = ref<RecordDTO>(new RecordDTO(""));
 
     onMounted(() => {
       sub = store
@@ -32,7 +32,7 @@ export default defineComponent({
         .pipe(
           map(
             (res: RecordDTO) =>
-              new Record(
+              new RecordDTO(
                 res.name,
                 res.description,
                 res.value,
@@ -41,7 +41,7 @@ export default defineComponent({
               )
           )
         )
-        .subscribe((res: Record) => {
+        .subscribe((res: RecordDTO) => {
           details.value = res;
           Logger.info("Details: ", [details.value]);
         });

@@ -1,6 +1,6 @@
 import { DataShape } from "./DataShape";
 
-export class Resource {
+export class ResourceDTO {
   name: string = "Resource fullname";
   address: string = "";
   phone: string = "+39";
@@ -24,4 +24,4 @@ export class Resource {
   }
 }
 
-export interface ResourceDTO extends Resource, DataShape {}
+export interface Resource extends ResourceDTO, DataShape {}

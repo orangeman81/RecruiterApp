@@ -7,11 +7,14 @@ import {
   Put,
   Get,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { ResourcesService } from './resources.service';
-import { Resource } from '../../../models/resource';
+import { Resource, ResourceDTO } from '../../../models/resource';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('resources')
+@UseGuards(AuthGuard('jwt'))
 export class ResourcesController {
   constructor(private resourceService: ResourcesService) {}
 
@@ -31,17 +34,17 @@ export class ResourcesController {
   }
 
   @Get()
-  async findAll(): Promise<Resource[]> {
+  async findAll(): Promise<ResourceDTO[]> {
     return this.resourceService.findAll();
   }
 
   @Get('search')
-  async search(@Query("query") query: string): Promise<Resource[]> {
+  async search(@Query('query') query: string): Promise<ResourceDTO[]> {
     return this.resourceService.search(query);
   }
 
   @Get(':id')
-  async findOne(@Param('id') id): Promise<Resource> {
+  async findOne(@Param('id') id): Promise<ResourceDTO> {
     return this.resourceService.findOne(id);
   }
 }

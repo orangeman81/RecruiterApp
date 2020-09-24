@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { RecordS } from 'src/schemas/record.schema';
 import { Model } from 'mongoose';
-import { Record } from '../../../models/record';
+import { RecordDTO } from '../../../models/record';
 
 @Injectable()
 export class RecordsService {
   constructor(@InjectModel(RecordS.name) private recModel: Model<RecordS>) {}
 
-  async create(record: Record): Promise<Record> {
+  async create(record: RecordDTO): Promise<RecordDTO> {
     const createdRecord = new this.recModel(record);
     await createdRecord.save();
     return createdRecord.toObject({ versionKey: false });
@@ -18,18 +18,18 @@ export class RecordsService {
     return this.recModel.findOneAndDelete({ _id: id });
   }
 
-  async update(record: Record, id: string): Promise<any> {
+  async update(record: RecordDTO, id: string): Promise<any> {
     return this.recModel.findOneAndUpdate({ _id: id }, record, {
       new: true,
       useFindAndModify: false,
     });
   }
 
-  async findAll(): Promise<Record[]> {
+  async findAll(): Promise<RecordDTO[]> {
     return this.recModel.find().exec();
   }
 
-  async findOne(recordId: string): Promise<Record> {
+  async findOne(recordId: string): Promise<RecordDTO> {
     return this.recModel.findOne({ _id: recordId }).exec();
   }
 }

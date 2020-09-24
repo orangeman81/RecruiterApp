@@ -1,8 +1,8 @@
 <template>
   <article class="card mt-24">
-    <header class="content f-l-jsb">
+    <header class="content withActions">
       <h2>List</h2>
-      <span class="actions">
+      <span>
         <input @input="search" type="text" placeholder="search" />
         <router-link to="/resources/edit/new" class="btn rounded">
           <span class="material-icons">add</span>
@@ -44,7 +44,7 @@ export default defineComponent({
       sub = $querySubject
         .pipe(
           filter((query: string) => query.length > 3 || query === ""),
-          debounceTime(400),
+          debounceTime(600),
           distinctUntilChanged(),
           switchMap((query: string) =>
             query === "" ? store.$load() : store.$search(query)

@@ -10,7 +10,16 @@
   }
 
   input {
-    max-width: 200px;
+    max-width: 162px;
+  }
+}
+
+header.withActions {
+  @extend .f-l-jsb;
+  @extend .f-wrap;
+
+  & > span:last-child {
+    @extend .actions;
   }
 }
 

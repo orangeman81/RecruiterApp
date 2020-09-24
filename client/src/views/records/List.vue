@@ -1,10 +1,15 @@
 <template>
-  <DataList url="/records/" :data="records" @remove="remove" />
-  <div class="actions mt-56">
-    <router-link to="/records/edit/new" class="btn rounded">
-      <span class="material-icons">add</span>
-    </router-link>
-  </div>
+  <article class="card mt-24">
+    <header class="content f-l-jsb">
+      <h2>List</h2>
+      <span class="actions">
+        <router-link to="/records/edit/new" class="btn rounded">
+          <span class="material-icons">add</span>
+        </router-link>
+      </span>
+    </header>
+    <DataList url="/records/" :data="records" @remove="remove" />
+  </article>
 </template>
 
 <script lang="ts">

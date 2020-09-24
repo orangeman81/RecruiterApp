@@ -1,8 +1,8 @@
 import { DataShape } from "./DataShape";
 
-export class Skill {
+export class SkillDTO {
   name: string;
   description: string;
 }
 
-export interface SkillDTO extends Skill, DataShape {}
+export interface Skill extends SkillDTO, DataShape {}

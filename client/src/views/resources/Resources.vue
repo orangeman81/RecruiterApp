@@ -10,7 +10,7 @@
 <script lang="ts">
 import { Subscription } from "rxjs";
 import { defineComponent, onMounted, onUnmounted } from "vue";
-import { ResourceDTO } from "../../../../models/resource";
+import { Resource } from "../../../../models/resource";
 import Provider from "../../components/Provider.vue";
 import { DataStore } from "../../store/core/DataStore";
 
@@ -20,7 +20,7 @@ export default defineComponent({
     Provider
   },
   setup() {
-    const ResourcesStore: DataStore<ResourceDTO> = new DataStore<ResourceDTO>(
+    const ResourcesStore: DataStore<Resource> = new DataStore<Resource>(
       {
         data: [],
         loaded: false,

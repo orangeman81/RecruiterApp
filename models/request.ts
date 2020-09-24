@@ -1,6 +1,6 @@
 import { DataShape } from "./DataShape";
 
-export class Request {
+export class RequestDTO {
   name: string;
   position: string;
   seniority: string;
@@ -8,4 +8,4 @@ export class Request {
   location: string;
 }
 
-export interface RequestDTO extends Request, DataShape {}
+export interface Request extends RequestDTO, DataShape {}

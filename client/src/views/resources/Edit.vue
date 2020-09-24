@@ -56,7 +56,7 @@
 import { Subscription } from "rxjs";
 import { finalize } from "rxjs/operators";
 import { defineComponent, inject, onMounted, onUnmounted, ref } from "vue";
-import { Resource, ResourceDTO } from "../../../../models/resource";
+import { ResourceDTO } from "../../../../models/resource";
 import router from "../../router";
 
 export default defineComponent({
@@ -66,7 +66,7 @@ export default defineComponent({
   },
   setup(props) {
     const store: any = inject("Store");
-    const formData = ref<Resource>(new Resource());
+    const formData = ref<ResourceDTO>(new ResourceDTO());
     let sub: Subscription = new Subscription();
 
     onMounted(() => {
