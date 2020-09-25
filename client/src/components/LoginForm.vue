@@ -21,7 +21,7 @@
 import { defineComponent, ref } from "vue";
 import { CredentialsDTO } from "../../../models/auth";
 export default defineComponent({
-  name: "Login",
+  name: "LoginForm",
   emits: ["submit"],
   setup() {
     const formData = ref<CredentialsDTO>({

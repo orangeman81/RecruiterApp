@@ -5,7 +5,7 @@ export interface CredentialsDTO {
   password: string;
 }
 
-export class UserDTO {
+export interface UserDTO {
   username: string;
   password: string;
   email: string;

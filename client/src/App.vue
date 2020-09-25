@@ -17,14 +17,19 @@
 </style>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, provide } from "vue";
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
+import { AuthStore } from "./store/index";
+import { GlobalStore } from "./store/core/GlobalStore";
 
 export default defineComponent({
   components: {
     Navbar,
     Footer
+  },
+  setup() {
+    provide<GlobalStore>("auth", AuthStore);
   }
 });
 </script>

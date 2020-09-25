@@ -1,7 +1,7 @@
 import { GlobalStore } from "./core/GlobalStore";
 
 const AuthStore: GlobalStore = new GlobalStore(
-  "http://localhost:3000/records/"
+  "http://localhost:3000/auth/"
 );
 
 // (async () => {

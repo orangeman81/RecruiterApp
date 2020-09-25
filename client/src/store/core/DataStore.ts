@@ -8,6 +8,7 @@ import { DataShape } from "../../../../models/DataShape";
 export class DataStore<T extends DataShape> extends Store<DataState<T>> {
   private headers = {
     "Content-Type": "application/json",
+    "Authorization": "Bearer " + localStorage.getItem("token"),
   };
 
   constructor(
