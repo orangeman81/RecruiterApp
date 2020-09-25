@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submit()">
+  <form @submit.prevent="$emit('submit', formData)">
     <div class="grid col-2">
       <span>
         <label>Username</label>
